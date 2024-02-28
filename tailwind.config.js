@@ -11,6 +11,9 @@ export default {
         semibold: 600,
         bold: 700,
       },
+      colors: {
+        "custom-blue": "#05267B",
+      },
     },
   },
   plugins: [
