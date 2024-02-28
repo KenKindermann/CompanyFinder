@@ -9,9 +9,10 @@ export const Button = ({ title, icon, onClick }) => {
 };
 
 // Options button
-export const OptionsButton = ({ options }) => {
+export const OptionsButton = ({ title, icon, options }) => {
   return (
     <div className="custom-button">
+      <img src={icon} alt={`${title} button`} />
       <select className="bg-transparent">
         {Object.values(options).map((title, index) => (
           <option key={index} value={title}>
