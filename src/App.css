@@ -28,5 +28,5 @@
 }
 
 .custom-button {
-  @apply bg-custom-blue px-4 py-2 flex justify-center items-center rounded-lg text-white;
+  @apply bg-custom-blue px-4 py-2 flex justify-center items-center rounded-lg text-white text-sm;
 }
