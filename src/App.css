@@ -24,5 +24,5 @@
 }
 
 .custom-section {
-  @apply max-w-screen-xl mx-auto;
+  @apply max-w-screen-xl mx-auto px-4 mt-4;
 }
