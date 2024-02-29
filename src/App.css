@@ -30,3 +30,8 @@
 .custom-button {
   @apply bg-custom-blue px-4 py-2 flex justify-center items-center rounded-lg text-white text-sm;
 }
+
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(238, 238, 238) 0%, rgb(231, 231, 231) 100%);
+}
