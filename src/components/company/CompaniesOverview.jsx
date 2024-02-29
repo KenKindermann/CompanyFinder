@@ -24,14 +24,26 @@ const CompaniesOverview = () => {
         {companyData && companyData.content.map((company) => <CompanyCard key={company.id} company={company} />)}
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-center items-center mt-4">
-        <img src={chevronLeftIcon} alt="chevron left icon" className="cursor-pointer" onClick={() => changePage(-1)} />
-        <span>
-          Page {control.page} of {companyData?.totalElements / control.size}
-        </span>
-        <img src={chevronRightIcon} alt="chevron right icon" className="cursor-pointer" onClick={() => changePage(1)} />
-      </div>
+      {/* Show pagination when totalElements exists  */}
+      {companyData?.totalElements && (
+        <div className="flex justify-center items-center mt-4">
+          <img
+            src={chevronLeftIcon}
+            alt="chevron left icon"
+            className="cursor-pointer"
+            onClick={() => changePage(-1)}
+          />
+          <span>
+            Page {control.page} of {companyData?.totalElements / control.size}
+          </span>
+          <img
+            src={chevronRightIcon}
+            alt="chevron right icon"
+            className="cursor-pointer"
+            onClick={() => changePage(1)}
+          />
+        </div>
+      )}
     </section>
   );
 };
