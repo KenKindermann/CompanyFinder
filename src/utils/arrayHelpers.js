@@ -3,9 +3,9 @@ export const isItemInArray = (array, item) => {
 };
 
 export const addItemToArray = (array, item) => {
-  return (updatedArray = [...array, item]);
+  return [...array, item];
 };
 
 export const deleteItemInArray = (array, item) => {
-  return (updatedArray = array.filter((entry) => entry.id !== item.id));
+  return array.filter((entry) => entry.id !== item.id);
 };
