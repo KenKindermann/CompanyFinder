@@ -2,13 +2,17 @@ import { Button, OptionsButton } from "../controls/Buttons.jsx";
 import filterIcon from "/icons/filter.svg";
 import sortIcon from "/icons/sort.svg";
 import orderIcon from "/icons/order.svg";
-import { apiFieldTitles, sizes, order } from "../../utils/Formatter.js";
+import { apiFieldTitles, sizes, order } from "../../utils/formatter.js";
+import { useState } from "react";
+import Popup from "./Popup.jsx";
 
 const ControlPanel = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <section className="custom-section flex flex-col gap-4 sm:flex-row sm:justify-between">
       <div className="flex gap-2 mb-2">
-        <Button title="Filter" icon={filterIcon} />
+        <Button title="Filter" icon={filterIcon} onClick={() => setShowPopup(true)} />
         <OptionsButton title="Sort" icon={sortIcon} options={apiFieldTitles} controlKey={"sort"} />
         <OptionsButton title="Order" icon={orderIcon} options={order} controlKey={"desc"} />
       </div>
@@ -16,6 +20,7 @@ const ControlPanel = () => {
         <p>Results per page</p>
         <OptionsButton options={sizes} controlKey={"size"} />
       </div>
+      <Popup title={"Filter"} inputs={apiFieldTitles} />
     </section>
   );
 };
