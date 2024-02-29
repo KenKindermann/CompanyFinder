@@ -13,7 +13,7 @@ const DetailCard = ({ type, details }) => {
 
   const individualKeys = keys[type];
   return (
-    <div className="w-full bg-white shadow-lg rounded-lg p-4 relative cursor-pointer transition ease-in-out hover:bg-gray-100">
+    <div className="w-full bg-white shadow-lg rounded-lg p-4 relative">
       {/* Company name*/}
       <h2 className="text-custom-blue font-semibold mb-2 mr-4 truncate text-sm sm:text-base">{type}</h2>
 
