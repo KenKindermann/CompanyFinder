@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { ControlContext } from "../provider/ControlContext";
+
 // Button
 export const Button = ({ title, icon, onClick }) => {
   return (
@@ -9,14 +12,21 @@ export const Button = ({ title, icon, onClick }) => {
 };
 
 // Options button
-export const OptionsButton = ({ title, icon, options }) => {
+export const OptionsButton = ({ title, icon, options, controlKey }) => {
+  const { setControl } = useContext(ControlContext);
+  const handleChange = (e) => {
+    let value = e.target.value;
+    value = value === "asc" ? false : value === "desc" ? true : value;
+    setControl((prevControl) => ({ ...prevControl, [controlKey]: value }));
+  };
+
   return (
     <div className="custom-button">
       <img src={icon} alt={`${title} button`} className={icon ? "block" : "hidden"} width="25px" />
-      <select className="bg-transparent">
-        {Object.values(options).map((title, index) => (
-          <option key={index} value={title}>
-            {title}
+      <select className="bg-transparent" onChange={(e) => handleChange(e)}>
+        {options?.map((option, index) => (
+          <option key={index} value={option.apiName}>
+            {option.label}
           </option>
         ))}
       </select>
