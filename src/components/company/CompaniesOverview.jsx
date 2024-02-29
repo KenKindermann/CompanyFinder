@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { fetchData } from "../../utils/axiosHelpers.js";
+import { useContext } from "react";
 import CompanyCard from "./CompanyCard.jsx";
 import { DataContext } from "../provider/DataContext";
 
