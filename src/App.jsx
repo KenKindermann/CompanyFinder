@@ -1,22 +1,15 @@
-import CompaniesOverview from "./components/company/CompaniesOverview";
-import ControlPanel from "./components/controls/ControlPanel";
 import Navbar from "./components/navigation/Navbar";
 import { Route, Routes } from "react-router-dom";
+import Home from "./views/Home";
+import CompanyDetailView from "./views/CompanyDetailView";
 
 const App = () => {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <ControlPanel />
-              <CompaniesOverview />
-            </>
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/company/:id" element={<CompanyDetailView />} />
       </Routes>
     </>
   );
