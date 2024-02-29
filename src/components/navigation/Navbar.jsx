@@ -1,10 +1,8 @@
-import { useContext, useState } from "react";
-import { DataContext } from "../provider/DataContext";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const { setCompanyData, favorites } = useContext(DataContext);
   const navigate = useNavigate();
 
   return (
@@ -33,7 +31,7 @@ const Navbar = () => {
           <img
             src="/icons/bookmark.svg"
             alt="bookmark icon"
-            onClick={() => setCompanyData(favorites)}
+            onClick={() => navigate("/favorites")}
             className="cursor-pointer"
           />
         </div>
