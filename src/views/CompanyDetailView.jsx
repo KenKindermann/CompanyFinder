@@ -4,6 +4,7 @@ import { fetchData } from "../utils/axiosHelpers.js";
 import DetailCard from "../components/company/DetailCard.jsx";
 import backwardsIcon from "/icons/backwards.svg";
 import bookmarkBlueIcon from "/icons/bookmark_blue.svg";
+import Spinner from "../components/loading/Spinner";
 
 const CompanyDetailView = () => {
   const [companyDetails, setCompanyDetails] = useState(null);
@@ -27,7 +28,7 @@ const CompanyDetailView = () => {
   const cards = ["Adress", "Information", "Contact", "Bank"];
 
   return !companyDetails ? (
-    <p>Loading..</p>
+    <Spinner />
   ) : (
     <section className="custom-section">
       {/* Backwards, company name & bookmark */}
