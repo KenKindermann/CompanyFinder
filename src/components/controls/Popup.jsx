@@ -15,7 +15,13 @@ const Popup = ({ title, inputs, setShowPopup }) => {
         <div className="flex justify-center mb-4">
           <Button title={"Add Filter"} icon={filterIcon} />
         </div>
-        <img src={closeIcon} width="25px" alt="close button" className="absolute top-5 right-5" />
+        <img
+          src={closeIcon}
+          width="25px"
+          alt="close button"
+          className="absolute top-5 right-5 cursor-pointer"
+          onClick={() => setShowPopup(false)}
+        />
       </div>
       {/* Dark overlay*/}
       <div
