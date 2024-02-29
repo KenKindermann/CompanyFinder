@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DataContext } from "../provider/DataContext";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
+  const { companyData, setCompanyData, favorites } = useContext(DataContext);
 
   return (
     <nav className="bg-custom-blue ">
@@ -24,7 +26,7 @@ const Navbar = () => {
             onClick={() => setShowSearch(true)}
             className="block sm:hidden"
           />
-          <img src="/icons/bookmark.svg" alt="bookmark icon" />
+          <img src="/icons/bookmark.svg" alt="bookmark icon" onClick={() => setCompanyData(favorites)} />
         </div>
       </div>
     </nav>
