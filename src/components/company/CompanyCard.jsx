@@ -2,10 +2,10 @@ import bookmarkBlueIcon from "/icons/bookmark_blue.svg";
 
 const CompanyCard = ({ company }) => {
   return (
-    <div className="w-full bg-white shadow-lg rounded-lg p-4 relative">
+    <div className="w-full bg-white shadow-lg rounded-lg p-4 relative cursor-pointer transition ease-in-out hover:bg-gray-100">
       {/* Company details*/}
-      <h2 className="text-custom-blue font-semibold mb-2 text-ellipses overflow-hidden">{company.company}</h2>
-      <ul className="text-sm">
+      <h2 className="text-custom-blue font-semibold mb-2 mr-4 truncate text-sm sm:text-base">{company.company}</h2>
+      <ul className="text-sm truncate">
         <li>
           {company.steet_number} {company.street}
         </li>
