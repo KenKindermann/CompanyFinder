@@ -26,16 +26,18 @@ const CompaniesOverview = () => {
 
       {/* Show pagination when totalElements exists  */}
       {companyData?.totalElements && (
-        <div className="flex justify-center items-center mt-4">
+        <div className="flex justify-center items-center my-4">
           <img
             src={chevronLeftIcon}
             alt="chevron left icon"
             className="cursor-pointer"
             onClick={() => changePage(-1)}
           />
+
           <span>
             Page {control.page} of {companyData?.totalElements / control.size}
           </span>
+
           <img
             src={chevronRightIcon}
             alt="chevron right icon"
