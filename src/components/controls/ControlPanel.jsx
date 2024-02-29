@@ -20,7 +20,7 @@ const ControlPanel = () => {
         <p>Results per page</p>
         <OptionsButton options={sizes} controlKey={"size"} />
       </div>
-      <Popup title={"Filter"} inputs={apiFieldTitles} />
+      {showPopup && <Popup title={"Filter"} inputs={apiFieldTitles} setShowPopup={setShowPopup} />}
     </section>
   );
 };
