@@ -1,8 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import CompaniesOverview from "../components/company/CompaniesOverview";
+// Icons
 import backwardsIcon from "/icons/backwards.svg";
-import { useContext, useEffect } from "react";
-import { DataContext } from "../components/provider/DataContext";
+
+// Context
+import { DataContext } from "../provider/DataContext";
+
+// Hooks
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+// Components
+import CompaniesOverview from "../components/company/CompaniesOverview";
 
 const Favorites = () => {
   const navigate = useNavigate();

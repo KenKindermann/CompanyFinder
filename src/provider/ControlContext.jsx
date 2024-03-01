@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { fetchData } from "../../utils/axiosHelpers";
-import { DataContext } from "./DataContext";
+// Hooks
+import { createContext, useEffect, useState } from "react";
 
 export const ControlContext = createContext();
 
@@ -13,11 +12,11 @@ export const ControlProvider = ({ children }) => {
     sort: "company",
   });
 
+  // Change query when control changes
   useEffect(() => {
     let params = new URLSearchParams(control).toString();
     params = params.replace(/\+/g, "%20");
     const query = `?${params}`;
-    console.log(query);
     setQuery(query);
   }, [control]);
 

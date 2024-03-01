@@ -1,8 +1,15 @@
-import { useContext } from "react";
-import CompanyCard from "./CompanyCard.jsx";
-import { ControlContext } from "../provider/ControlContext.jsx";
+// Icons
 import chevronLeftIcon from "/icons/chevron_left.svg";
 import chevronRightIcon from "/icons/chevron_right.svg";
+
+// Context
+import { ControlContext } from "../../provider/ControlContext.jsx";
+
+// Hooks
+import { useContext } from "react";
+
+// Components
+import CompanyCard from "./CompanyCard.jsx";
 import Spinner from "../loading/Spinner";
 
 const CompaniesOverview = ({ companyData }) => {

@@ -1,8 +1,15 @@
-import { useNavigate } from "react-router-dom";
+// Icons
 import bookmarkBlueIcon from "/icons/bookmark_blue.svg";
 import bookmarkfilled from "/icons/bookmark_filled.svg";
-import { useContext, useEffect } from "react";
-import { DataContext } from "../provider/DataContext";
+
+// Context
+import { DataContext } from "../../provider/DataContext.jsx";
+
+// Hooks
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+
+// Utils
 import { addItemToArray, deleteItemInArray, isItemInArray } from "../../utils/arrayHelpers.js";
 
 const CompanyCard = ({ company }) => {

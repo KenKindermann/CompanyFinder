@@ -1,8 +1,15 @@
-import { Button } from "./Buttons";
+// Icons
 import filterIcon from "/icons/filter.svg";
 import closeIcon from "/icons/close.svg";
+
+// Hooks
 import { useContext } from "react";
-import { ControlContext } from "../provider/ControlContext";
+
+// Context
+import { ControlContext } from "../../provider/ControlContext";
+
+// Components
+import { Button } from "./Buttons";
 
 const Popup = ({ title, inputs, setShowPopup, filter }) => {
   const { control, setControl } = useContext(ControlContext);

@@ -1,6 +1,11 @@
-import axios from "axios";
-import { useContext } from "react";
+// Context
 import { ControlContext } from "../provider/ControlContext";
+
+// Hooks
+import { useContext } from "react";
+
+// Libraries
+import axios from "axios";
 
 const useAxios = () => {
   const { query } = useContext(ControlContext);

@@ -1,6 +1,9 @@
+// Context
+import { ControlContext } from "../../provider/ControlContext.jsx";
+
+// Hooks
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ControlContext } from "../provider/ControlContext.jsx";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);

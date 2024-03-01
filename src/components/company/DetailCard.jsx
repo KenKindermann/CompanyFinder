@@ -12,6 +12,7 @@ const DetailCard = ({ type, details }) => {
   };
 
   const individualKeys = keys[type];
+
   return (
     <div className="w-full bg-white shadow-lg rounded-lg p-4 relative">
       {/* Company name*/}
