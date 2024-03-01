@@ -5,12 +5,12 @@ import { useContext, useEffect } from "react";
 import { DataContext } from "../components/provider/DataContext";
 
 const Favorites = () => {
-  const { setCompanyData, favorites } = useContext(DataContext);
   const navigate = useNavigate();
+  const { favorites, setFavorites } = useContext(DataContext);
 
   useEffect(() => {
-    setCompanyData({ content: favorites });
-  }, []);
+    console.log(favorites);
+  }, [favorites]);
 
   return (
     <section>
@@ -18,7 +18,7 @@ const Favorites = () => {
         <img src={backwardsIcon} alt="backwards icon" onClick={() => navigate("/")} className="cursor-pointer" />
         <h1 className="text-custom-blue font-bold text-xl">Favorites</h1>
       </div>
-      <CompaniesOverview />
+      <CompaniesOverview companyData={favorites} />
     </section>
   );
 };
