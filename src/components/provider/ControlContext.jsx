@@ -5,7 +5,7 @@ import { DataContext } from "./DataContext";
 export const ControlContext = createContext();
 
 export const ControlProvider = ({ children }) => {
-  const { setCompanyData } = useContext(DataContext);
+  const [query, setQuery] = useState("");
   const [control, setControl] = useState({
     desc: false,
     page: 1,
@@ -14,19 +14,18 @@ export const ControlProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const query = `?page=${control.page}&size=${control.size}&sort=${control.sort}&desc=${control.desc}`;
+    let params = new URLSearchParams(control).toString();
+    params = params.replace(/\+/g, "%20");
+    const query = `?${params}`;
     console.log(query);
-    getCompanies(query);
+    setQuery(query);
   }, [control]);
-
-  const getCompanies = async (query) => {
-    const companies = await fetchData(query);
-    setCompanyData(companies);
-  };
 
   const value = {
     control,
     setControl,
+    query,
+    setQuery,
   };
 
   return <ControlContext.Provider value={value}>{children}</ControlContext.Provider>;
