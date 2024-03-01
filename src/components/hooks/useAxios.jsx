@@ -9,7 +9,7 @@ const useAxios = () => {
   const fetchData = async (setState) => {
     try {
       const response = await axios.get(url + query);
-      setState(response);
+      setState(response.data);
     } catch (error) {
       console.log(error);
     }
