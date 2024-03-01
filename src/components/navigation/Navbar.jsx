@@ -14,11 +14,17 @@ const Navbar = () => {
     }
   };
 
+  // Navigate to home and reset control by clicking on logo
+  const handleClick = () => {
+    setControl({ desc: false, page: 1, size: 10, sort: "company" });
+    navigate("/");
+  };
+
   return (
     <nav className="bg-custom-blue ">
       <div className="flex justify-between items-center text-white gap-8 h-20 p-4 max-w-screen-xl mx-auto">
         {/* Logo */}
-        <span className={showSearch ? `hidden` : `text-xl font-bold cursor-pointer`} onClick={() => navigate("/")}>
+        <span className={showSearch ? `hidden` : `text-xl font-bold cursor-pointer`} onClick={handleClick}>
           CompanyFinder
         </span>
 
