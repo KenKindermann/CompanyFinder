@@ -1,19 +1,24 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import CompaniesOverview from "../components/company/CompaniesOverview";
 import ControlPanel from "../components/controls/ControlPanel";
 import { ControlContext } from "../components/provider/ControlContext";
+import useAxios from "../components/hooks/useAxios";
 
 const Home = () => {
-  const { control, setControl } = useContext(ControlContext);
+  const [companyData, setCompanyData] = useState(null);
+  const { control, query } = useContext(ControlContext);
+  const fetchData = useAxios();
 
   useEffect(() => {
-    setControl({ ...control });
-  }, []);
+    if (control && query) {
+      fetchData(setCompanyData);
+    }
+  }, [query]);
 
   return (
     <main>
       <ControlPanel />
-      <CompaniesOverview />
+      <CompaniesOverview companyData={companyData} />
     </main>
   );
 };
