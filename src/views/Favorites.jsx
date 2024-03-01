@@ -9,7 +9,7 @@ const Favorites = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCompanyData(favorites);
+    setCompanyData({ content: favorites });
   }, []);
 
   return (
