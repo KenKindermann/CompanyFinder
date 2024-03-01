@@ -16,7 +16,7 @@ const Favorites = () => {
   const { favorites } = useContext(DataContext);
 
   return (
-    <section>
+    <section className="custom-section">
       <div className="flex gap-4 items-center px-4 pt-4">
         <img src={backwardsIcon} alt="backwards icon" onClick={() => navigate("/")} className="cursor-pointer" />
         <h1 className="text-custom-blue font-bold text-xl">Favorites</h1>
