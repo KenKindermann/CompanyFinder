@@ -1,3 +1,4 @@
+// Libraries
 import { ClipLoader } from "react-spinners";
 
 const Spinner = () => {

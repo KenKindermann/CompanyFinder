@@ -1,43 +1,38 @@
-import { Button, OptionsButton } from "../controls/Buttons.jsx";
+// Icons
 import filterIcon from "/icons/filter.svg";
 import sortIcon from "/icons/sort.svg";
 import orderIcon from "/icons/order.svg";
-import { apiFieldTitles, sizes, order } from "../../utils/formatter.js";
-import { useContext, useEffect, useState } from "react";
+
+// Hooks
+import { useState } from "react";
+
+// Components
+import { Button, OptionsButton } from "../controls/Buttons.jsx";
 import Popup from "./Popup.jsx";
-import { fetchData } from "../../utils/axiosHelpers.js";
-import { DataContext } from "../provider/DataContext.jsx";
+
+// Utils
+import { apiFieldTitles, sizes, order } from "../../utils/formatter.js";
 
 const ControlPanel = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState(null);
-  const { companyData, setCompanyData } = useContext(DataContext);
-
-  useEffect(() => {
-    let params = new URLSearchParams(filter).toString();
-    params = params.replace(/\+/g, "%20");
-    const query = `?${params}`;
-    getSearchResults(query);
-  }, [filter]);
-
-  const getSearchResults = async (query) => {
-    const searchResults = await fetchData(query);
-    setCompanyData(searchResults);
-  };
 
   return (
     <section className="custom-section flex items-center flex-col gap-4 sm:flex-row sm:justify-between ">
+      {/* Control buttons */}
       <div className="flex gap-2 mb-2">
         <Button title="Filter" icon={filterIcon} onClick={() => setShowPopup(true)} />
         <OptionsButton title="Sort" icon={sortIcon} options={apiFieldTitles} controlKey={"sort"} />
         <OptionsButton title="Order" icon={orderIcon} options={order} controlKey={"desc"} />
       </div>
 
+      {/* Results per page */}
       <div className="flex items-center gap-2">
         <p>Results per page</p>
         <OptionsButton options={sizes} controlKey={"size"} />
       </div>
 
+      {/* Popup */}
       {showPopup && (
         <Popup
           title={"Filter"}

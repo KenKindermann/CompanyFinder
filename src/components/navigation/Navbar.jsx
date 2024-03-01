@@ -1,27 +1,33 @@
+// Context
+import { ControlContext } from "../../provider/ControlContext.jsx";
+
+// Hooks
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchData } from "../../utils/axiosHelpers.js";
-import { DataContext } from "../provider/DataContext";
 
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const { setCompanyData } = useContext(DataContext);
+  const { control, setControl } = useContext(ControlContext);
   const navigate = useNavigate();
 
   // Search company by press enter
   const handleKeyDown = async (e) => {
     if (e.key === "Enter") {
-      const query = `?search_company=${e.target.value}`;
-      const searchResults = await fetchData(query);
-      setCompanyData(searchResults);
+      setControl({ ...control, search_company: e.target.value });
     }
+  };
+
+  // Navigate to home and reset control by clicking on logo
+  const handleClick = () => {
+    setControl({ desc: false, page: 1, size: 10, sort: "company" });
+    navigate("/");
   };
 
   return (
     <nav className="bg-custom-blue ">
       <div className="flex justify-between items-center text-white gap-8 h-20 p-4 max-w-screen-xl mx-auto">
         {/* Logo */}
-        <span className={showSearch ? `hidden` : `text-xl font-bold cursor-pointer`} onClick={() => navigate("/")}>
+        <span className={showSearch ? `hidden` : `text-xl font-bold cursor-pointer`} onClick={handleClick}>
           CompanyFinder
         </span>
 
@@ -29,7 +35,7 @@ const Navbar = () => {
         <input
           type="search"
           placeholder="Search company..."
-          className={`p-2 rounded-lg sm:block text-black ${showSearch ? "w-full" : "w-3/4 hidden"}`}
+          className={`p-2 rounded-lg sm:block text-black outline-custom-blue ${showSearch ? "w-full" : "w-3/4 hidden"}`}
           onKeyDown={(e) => handleKeyDown(e)}
         />
 

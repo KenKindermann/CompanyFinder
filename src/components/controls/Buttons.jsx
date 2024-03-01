@@ -1,5 +1,8 @@
+// Context
+import { ControlContext } from "../../provider/ControlContext";
+
+// Hooks
 import { useContext } from "react";
-import { ControlContext } from "../provider/ControlContext";
 
 // Button
 export const Button = ({ title, icon, onClick }) => {
