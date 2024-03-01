@@ -11,19 +11,6 @@ import { DataContext } from "../provider/DataContext.jsx";
 const ControlPanel = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [filter, setFilter] = useState(null);
-  const { companyData, setCompanyData } = useContext(DataContext);
-
-  useEffect(() => {
-    let params = new URLSearchParams(filter).toString();
-    params = params.replace(/\+/g, "%20");
-    const query = `?${params}`;
-    getSearchResults(query);
-  }, [filter]);
-
-  const getSearchResults = async (query) => {
-    const searchResults = await fetchData(query);
-    setCompanyData(searchResults);
-  };
 
   return (
     <section className="custom-section flex items-center flex-col gap-4 sm:flex-row sm:justify-between ">
