@@ -3,7 +3,9 @@ import { createContext, useEffect, useState } from "react";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(JSON.parse(window.localStorage.getItem("CompanyFinderFavorites")) || []);
+  const [favorites, setFavorites] = useState(
+    JSON.parse(window.localStorage.getItem("CompanyFinderFavorites")) || { content: [] }
+  );
 
   useEffect(() => {
     window.localStorage.setItem("CompanyFinderFavorites", JSON.stringify(favorites));
