@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import bookmarkBlueIcon from "/icons/bookmark_blue.svg";
 import bookmarkfilled from "/icons/bookmark_filled.svg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DataContext } from "../provider/DataContext";
 import { addItemToArray, deleteItemInArray, isItemInArray } from "../../utils/arrayHelpers.js";
 
@@ -13,12 +13,12 @@ const CompanyCard = ({ company }) => {
     e.stopPropagation();
 
     // Check if item is in array and than add or remove it
-    if (isItemInArray(favorites, company)) {
-      const updatedArray = deleteItemInArray(favorites, company);
-      setFavorites(updatedArray);
+    if (isItemInArray(favorites.content, company)) {
+      const updatedArray = deleteItemInArray(favorites.content, company);
+      setFavorites({ ...favorites, content: updatedArray });
     } else {
-      const updatedArray = addItemToArray(favorites, company);
-      setFavorites(updatedArray);
+      const updatedArray = addItemToArray(favorites.content, company);
+      setFavorites({ ...favorites, content: updatedArray });
     }
   };
 
@@ -40,7 +40,7 @@ const CompanyCard = ({ company }) => {
       </ul>
       {/* Bookmark */}
       <img
-        src={favorites.some((item) => item.id === company.id) ? bookmarkfilled : bookmarkBlueIcon}
+        src={favorites.content.some((item) => item.id === company.id) ? bookmarkfilled : bookmarkBlueIcon}
         alt="bookmark icon"
         width="25px"
         className="absolute top-2 right-2 cursor-pointer"
