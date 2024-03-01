@@ -35,7 +35,8 @@ const CompaniesOverview = () => {
           />
 
           <span>
-            Page {control.page} of {companyData?.totalElements / control.size}
+            Page {control.page} of{" "}
+            {companyData?.totalElements / control.size < 1 ? 1 : companyData?.totalElements / control.size}
           </span>
 
           <img
