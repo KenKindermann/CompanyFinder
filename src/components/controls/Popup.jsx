@@ -1,8 +1,11 @@
 import { Button } from "./Buttons";
 import filterIcon from "/icons/filter.svg";
 import closeIcon from "/icons/close.svg";
+import { useContext } from "react";
+import { ControlContext } from "../provider/ControlContext";
 
-const Popup = ({ title, inputs, setShowPopup, filter, setFilter }) => {
+const Popup = ({ title, inputs, setShowPopup, filter }) => {
+  const { control, setControl } = useContext(ControlContext);
   // FormData to object and hide popup by submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,7 +13,7 @@ const Popup = ({ title, inputs, setShowPopup, filter, setFilter }) => {
     setShowPopup(false);
   };
 
-  // Format formData to object and set object in filter state
+  // Format formData to object and set object in control state
   const formDataToObject = (e) => {
     const formData = new FormData(e);
     const dataObject = {};
@@ -20,7 +23,7 @@ const Popup = ({ title, inputs, setShowPopup, filter, setFilter }) => {
         dataObject[`search_${name}`] = value;
       }
     }
-    setFilter(dataObject);
+    setControl({ ...control, ...dataObject });
   };
 
   return (
