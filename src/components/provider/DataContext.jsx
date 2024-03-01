@@ -3,7 +3,6 @@ import { createContext, useEffect, useState } from "react";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [companyData, setCompanyData] = useState(null);
   const [favorites, setFavorites] = useState(JSON.parse(window.localStorage.getItem("CompanyFinderFavorites")) || []);
 
   useEffect(() => {
@@ -11,8 +10,6 @@ export const DataProvider = ({ children }) => {
   }, [favorites]);
 
   const value = {
-    companyData,
-    setCompanyData,
     favorites,
     setFavorites,
   };
