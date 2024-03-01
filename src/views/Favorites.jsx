@@ -6,11 +6,7 @@ import { DataContext } from "../components/provider/DataContext";
 
 const Favorites = () => {
   const navigate = useNavigate();
-  const { favorites, setFavorites } = useContext(DataContext);
-
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
+  const { favorites } = useContext(DataContext);
 
   return (
     <section>
