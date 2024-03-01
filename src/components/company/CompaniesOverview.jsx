@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import CompanyCard from "./CompanyCard.jsx";
-import { DataContext } from "../provider/DataContext";
 import { ControlContext } from "../provider/ControlContext.jsx";
 import chevronLeftIcon from "/icons/chevron_left.svg";
 import chevronRightIcon from "/icons/chevron_right.svg";
 
-const CompaniesOverview = () => {
-  const { companyData } = useContext(DataContext);
+const CompaniesOverview = ({ companyData }) => {
   const { control, setControl } = useContext(ControlContext);
 
   // Change page within valid range
@@ -21,7 +19,7 @@ const CompaniesOverview = () => {
     <section className="custom-section">
       {/* Companies */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {companyData && companyData.content.map((company) => <CompanyCard key={company.id} company={company} />)}
+        {companyData && companyData.content?.map((company) => <CompanyCard key={company.id} company={company} />)}
       </div>
 
       {/* Show pagination when totalElements exists  */}
