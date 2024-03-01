@@ -3,6 +3,7 @@ import CompanyCard from "./CompanyCard.jsx";
 import { ControlContext } from "../provider/ControlContext.jsx";
 import chevronLeftIcon from "/icons/chevron_left.svg";
 import chevronRightIcon from "/icons/chevron_right.svg";
+import Spinner from "../loading/Spinner";
 
 const CompaniesOverview = ({ companyData }) => {
   const { control, setControl } = useContext(ControlContext);
@@ -17,33 +18,41 @@ const CompaniesOverview = ({ companyData }) => {
 
   return (
     <section className="custom-section">
-      {/* Companies */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {companyData && companyData.content?.map((company) => <CompanyCard key={company.id} company={company} />)}
-      </div>
+      {!companyData ? (
+        <Spinner />
+      ) : (
+        <>
+          {/* Companies */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {companyData.content.map((company) => (
+              <CompanyCard key={company.id} company={company} />
+            ))}
+          </div>
 
-      {/* Show pagination when totalElements exists  */}
-      {companyData?.totalElements && (
-        <div className="flex justify-center items-center my-4">
-          <img
-            src={chevronLeftIcon}
-            alt="chevron left icon"
-            className="cursor-pointer"
-            onClick={() => changePage(-1)}
-          />
+          {/* Show pagination when totalElements exists  */}
+          {companyData.totalElements && (
+            <div className="flex justify-center items-center my-4">
+              <img
+                src={chevronLeftIcon}
+                alt="chevron left icon"
+                className="cursor-pointer"
+                onClick={() => changePage(-1)}
+              />
 
-          <span>
-            Page {control.page} of{" "}
-            {companyData?.totalElements / control.size < 1 ? 1 : companyData?.totalElements / control.size}
-          </span>
+              <span>
+                Page {control.page} of{" "}
+                {companyData.totalElements / control.size < 1 ? 1 : companyData.totalElements / control.size}
+              </span>
 
-          <img
-            src={chevronRightIcon}
-            alt="chevron right icon"
-            className="cursor-pointer"
-            onClick={() => changePage(1)}
-          />
-        </div>
+              <img
+                src={chevronRightIcon}
+                alt="chevron right icon"
+                className="cursor-pointer"
+                onClick={() => changePage(1)}
+              />
+            </div>
+          )}
+        </>
       )}
     </section>
   );
